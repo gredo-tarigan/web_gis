@@ -1,0 +1,122 @@
+/*------------------------------------
+- META VARIABLES
+------------------------------------*/
+/*------------------------------------
+- SIDEBAR VARIABLES
+------------------------------------*/
+.widget-sidebar-context {
+  position: relative;
+  /**
+  make the footer go at the bottom of the screen
+   */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /*------------------------------------
+  - CLICKED STATES
+  ------------------------------------*/ }
+  .widget-sidebar-context .page-header {
+    position: relative;
+    z-index: 1025; }
+  .widget-sidebar-context .page-body {
+    background: #e3e3e3;
+    flex-grow: 1;
+    display: flex; }
+    .widget-sidebar-context .page-body .widget-sidebar {
+      position: fixed;
+      width: 240px;
+      height: calc(100vh - 50px);
+      /**
+      Note: we use margin-left instead of transform: translateX because it seems that the latter
+      extends the width of the divs, which makes scrollbars appear in certain cases,
+      while on the other hand with margin-left the content remains constrained inside its container div boundaries.
+       */
+      margin-left: -240px;
+      z-index: 1024;
+      display: flex;
+      display: -ms-flexbox;
+      flex-direction: column;
+      padding: 0;
+      color: #fff;
+      background: #262D33;
+      transition: margin 0.24s, opacity 0.24s;
+      overflow-y: auto;
+      opacity: 0;
+      /*------------------------------------
+      - NATURAL RESPONSIVENESS for the sidebar
+      ------------------------------------*/ }
+      .widget-sidebar-context .page-body .widget-sidebar i {
+        margin-right: 7px; }
+      .widget-sidebar-context .page-body .widget-sidebar a[data-toggle="collapse"] {
+        position: relative; }
+      .widget-sidebar-context .page-body .widget-sidebar .dropdown-toggle::after {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%); }
+      .widget-sidebar-context .page-body .widget-sidebar [aria-expanded="false"]::after {
+        transition: transform 0.24s;
+        transform: rotate(-90deg); }
+      .widget-sidebar-context .page-body .widget-sidebar [aria-expanded="true"]::after {
+        transition: transform 0.24s;
+        transform: rotate(0deg); }
+      .widget-sidebar-context .page-body .widget-sidebar a[aria-expanded="true"], .widget-sidebar-context .page-body .widget-sidebar a.active {
+        color: #fff;
+        background: #315472; }
+      .widget-sidebar-context .page-body .widget-sidebar ul li a {
+        padding: 10px;
+        font-size: 1em;
+        display: block;
+        color: #e0e0e0;
+        text-decoration: none;
+        border-left: 2px solid transparent; }
+      .widget-sidebar-context .page-body .widget-sidebar ul li a:hover {
+        background: #414d58;
+        border-left: 2px solid #608ab3; }
+      .widget-sidebar-context .page-body .widget-sidebar ul ul a {
+        font-size: 0.9em !important;
+        padding-left: 30px !important; }
+      .widget-sidebar-context .page-body .widget-sidebar ul ul ul a {
+        padding-left: 50px !important; }
+      .widget-sidebar-context .page-body .widget-sidebar .active {
+        background-color: #072433; }
+      @media (min-width: 992px) {
+        .widget-sidebar-context .page-body .widget-sidebar {
+          margin-left: 0px;
+          opacity: 1; } }
+  .widget-sidebar-context .page-main {
+    margin-left: 0;
+    flex: 1;
+    /**
+    * Very important!!
+    * Without it, the reponsive tables (.table-responsive) class won't work properly inside cards.
+    * Spent 1 hour to find it...
+    */
+    min-width: 0; }
+  @media (min-width: 992px) {
+    .widget-sidebar-context .page-main, .widget-sidebar-context .page-footer {
+      margin-left: 240px; } }
+  .widget-sidebar-context.sidebar-show .widget-sidebar {
+    margin-left: 0px;
+    opacity: 1; }
+  .widget-sidebar-context.sidebar-show .page-main, .widget-sidebar-context.sidebar-show .page-footer {
+    margin-left: 240px; }
+  @media (max-width: 576px) {
+    .widget-sidebar-context.sidebar-show .page-main::before {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1010;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: rgba(0, 0, 0, 0.7);
+      animation: opacity .25s; } }
+  .widget-sidebar-context.sidebar-hide .widget-sidebar {
+    margin-left: -240px;
+    opacity: 0; }
+  .widget-sidebar-context.sidebar-hide .page-main, .widget-sidebar-context.sidebar-hide .page-footer {
+    margin-left: 0; }
+
+/*# sourceMappingURL=simplesidebar.css.map */
