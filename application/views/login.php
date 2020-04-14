@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Web GIS</title>
+    <title>Sistem Informasi Geografis</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico">
@@ -27,16 +27,21 @@
         }
         ?>
     </div>
-    <div class="main">
+    <div class="main" 
+    style="
+    background: url(<?php echo base_url('assets/images/gis.jpg');?>) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;">
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="../../assets/login_register_assets/images/signin-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="../../assets/login_register_assets/images/signin-image.jpg"></figure>
                         <a href="<?php echo base_url('index.php/home/register') ?>" class="signup-image-link">Create an account</a>
                     </div>
-
                     <div class="signin-form">
                         <h2 class="form-title">Sign in</h2>
                         <form method="POST" class="register-form" id="login-form" action="<?php echo base_url('index.php/auth/login') ?>" onSubmit="return validasi()">

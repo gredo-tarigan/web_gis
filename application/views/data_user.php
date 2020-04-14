@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Web GIS</title>
+<title>Sistem Informasi Geografis</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,7 +17,12 @@
 <style type="text/css">
     body {
         color: #566787;
-		background: #f5f5f5;
+		/*background: #F5F60D;*/ 
+		background: url(<?php echo base_url('assets/images/city-map.jpg');?>) no-repeat center center fixed;
+  		-webkit-background-size: cover;
+  		-moz-background-size: cover;
+ 		-o-background-size: cover;
+  		background-size: cover; /*Background added*/
 		font-family: 'Varela Round', sans-serif;
 		font-size: 13px;
 	}
@@ -173,13 +178,16 @@ $(document).ready(function(){
 	});
 });
 </script>
+<link href="<?=base_url()?>assets/css/simplesidebar.css" rel="stylesheet">
 </head>
 <body>
       <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>";
-      <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>
+      <!--<img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>
+	  <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>-->
+	  <img src="<?php echo base_url('assets/images/logo_pbd.png'); ?>" alt='maptime logo gif' width='45px' height='40px'/>
+      <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">&nbsp; Sistem Informasi Geografis</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

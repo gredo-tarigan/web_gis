@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Web GIS</title>
+  <title>Sistem Informasi Geografis</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?=base_url()?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -159,8 +159,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-        <img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>";
-        <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>
+        <!--<img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>";
+        <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>-->
+        <img src="<?php echo base_url('assets/images/logo_pbd.png'); ?>" alt='maptime logo gif' width='45px' height='40px'/>
+        <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">&nbsp; Sistem Informasi Geografis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -182,8 +184,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </nav>
 
-<div style="background-image: url('https://image.freepik.com/free-photo/abstract-background-cement-wall-shadow-light-concept_53876-31788.jpg'); height:100%; margin:auto;">
-    <div class="testbox">
+<!--<div style="background-image: url('https://tebuireng.online/wp-content/uploads/2018/05/Travelling.jpg'); height:100%; margin:auto;">-->
+<div style="
+  background: url(<?php echo base_url('assets/images/gis.jpg');?>) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">    
+<div class="testbox">
       <form>
         <div class="banner">
           <h1>Profile Page</h1>

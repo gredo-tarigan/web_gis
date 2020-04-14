@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Web GIS </title>
+    <title>Sistem Informasi Geografis</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
@@ -20,7 +20,13 @@
 </head>
 <body>
 
-    <div class="main">
+    <div class="main" 
+    style="
+    background: url(<?php echo base_url('assets/images/gis.jpg');?>) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;">
 
         <!-- Sign up form -->
         <section class="signup">

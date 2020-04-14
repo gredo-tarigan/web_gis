@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Web GIS</title>
+  <title>Sistem Informasi Geografis</title>
 
   <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
     <!-- Bootstrap -->
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Navigation -->
   <div id="my-sidebar-context" class="widget-sidebar-context">
-      <header id="this-header" class="navbar justify-content-start align-items-center navbar-dark bg-dark page-header">
+      <!--<header id="this-header" class="navbar justify-content-start align-items-center navbar-dark bg-dark page-header">
 
           <a class="navbar-brand" href="#">
               WEB GIS
@@ -48,12 +48,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="fas fa-bars"></i>
           </a>
 
-      </header>
+      </header>-->
+    <!--Navbar atas-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <!--<img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>
+        <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>-->
+        <img src="<?php echo base_url('assets/images/logo_pbd.png'); ?>" alt='maptime logo gif' width='45px' height='40px'/>
+        <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">&nbsp; Sistem Informasi Geografis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="<?php echo base_url('index.php/page/v_home') ?>">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('index.php/page/data_landmark') ?>">Landmark</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('index.php/page/data_user') ?>">User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('index.php/auth/logout') ?>">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Navbar atas-->
 
     <div class="page-body">
-
       <!-- Sidebar <a href="https://www.jqueryscript.net/tags.php?/Navigation/">Navigation</a> -->
-      <nav class="widget-sidebar">
+      <!--<nav class="widget-sidebar">
         <ul>
           <li class="active">
             <a href="<?php echo base_url('index.php/page/v_home') ?>">
@@ -88,11 +118,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
           </li>
         </ul>
-      </nav>
-
-
-
-  <!--Normale contenuto di pagina-->
+      </nav>-->
+      
+  <!--Container Map-->
   <div class="container">
 	  <div class="row">
       <div class="col-md-12">
@@ -103,13 +131,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
   </div>
-  <!--Normale contenuto di pagina-->
+  <!--Container Map-->
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="<?=base_url()?>assets/leaflet/leaflet.js"></script>
 
-
+  <!--Map Script-->
   <script type="text/javascript">
 
 
@@ -198,11 +226,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(function(){
   $("#my-sidebar-context").simpleSidebar();
 });
-
-
-
-
   </script>
+  <!--Map Script-->
 
     <!-- Bootstrap core JavaScript -->
   <script src="<?=base_url()?>assets/vendor/jquery/jquery.slim.min.js"></script>
