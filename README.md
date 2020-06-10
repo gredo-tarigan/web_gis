@@ -2,7 +2,7 @@
 Website Geographic Information System (GIS) based on PHP web. Made with Code Igniter 3 and Leaflet.
 
 ## Introduction
-Nama Kelompok :
+Nama Kelompok : <br>
 Obed Jeck Gredo Tarigan - 21120117120026 <br>
 Jeremia Joseph P - 21120117140031 <br>
 Siskawati Sianipar - 21120117120029 <br>
