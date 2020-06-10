@@ -1,13 +1,11 @@
-# Web GIS
+# Website Geographic Information System (GIS) based on PHP web. Made with Code Igniter 3 and Leaflet.
 
 ## Introduction
 Project Mid-Semester Task of PBD - Teknik Komputer<br>
 
 Obed Jeck Gredo Tarigan - 21120117120026 <br>
 Jeremia Joseph - <br>
-Siskawati Sianipar - <br>
-
-Website Geographic Information System (GIS) based on PHP web. Made with Code Igniter 3 and Leaflet.
+Siskawati Sianipar - 21120117120029 <br>
 
 Features of this web app:
 1. CRUD Marker on MAP <br>
