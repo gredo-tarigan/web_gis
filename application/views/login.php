@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>Sistem Informasi Geografis</title>
+
+    <title>Web GIS</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico">
@@ -27,21 +27,22 @@
         }
         ?>
     </div>
-    <div class="main" 
-    style="
+    <div class="main" style="
     background: url(<?php echo base_url('assets/images/gis.jpg');?>) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;">
+
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="../../assets/login_register_assets/images/signin-image.jpg"></figure>
+                        <figure><img src="../../assets/login_register_assets/images/signin-image.jpg" alt="sing up image"></figure>
                         <a href="<?php echo base_url('index.php/home/register') ?>" class="signup-image-link">Create an account</a>
                     </div>
+
                     <div class="signin-form">
                         <h2 class="form-title">Sign in</h2>
                         <form method="POST" class="register-form" id="login-form" action="<?php echo base_url('index.php/auth/login') ?>" onSubmit="return validasi()">
@@ -69,14 +70,14 @@
     <script type="text/javascript">
         function validasi() {
             var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;		
+            var password = document.getElementById("password").value;
             if (username != "" && password!="") {
                 return true;
             }else{
                 alert('Username and Password must be filled!');
                 return false;
             }
-        }   
+        }
     </script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

@@ -4,26 +4,27 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sistem Informasi Geografis</title>
+<title>Web GIS</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link href="<?=base_url()?>assets/leaflet/leaflet.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?=base_url()?>node_modules/leaflet-draw/dist/leaflet.draw.css"/>
 
-<link href="<?=base_url()?>assets/leaflet/leaflet.css" rel="stylesheet">
-
-<!-- Bootstrap core CSS -->
-<link href="<?=base_url()?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="<?=base_url()?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?=base_url()?>assets/css/simplesidebar.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 <style type="text/css">
+.user{
+  padding:5px;
+  margin-bottom: 5px;
+}
+#mapid { height: 480px; }
     body {
         color: #566787;
-		/*background: #f5f5f5;*/
-		background: url(<?php echo base_url('assets/images/city-map.jpg');?>) no-repeat center center fixed;
-  		-webkit-background-size: cover;
-  		-moz-background-size: cover;
- 		-o-background-size: cover;
-  		background-size: cover; /*Background added*/
+		background: #f5f5f5;
 		font-family: 'Varela Round', sans-serif;
 		font-size: 13px;
 	}
@@ -34,7 +35,7 @@
 		border-radius: 3px;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
     }
-	.table-title {        
+	.table-title {
 		padding-bottom: 15px;
 		background: #435d7d;
 		color: #fff;
@@ -90,7 +91,7 @@
         font-size: 13px;
         margin: 0 5px;
         cursor: pointer;
-    }	
+    }
     table.table td:last-child i {
 		opacity: 0.9;
 		font-size: 22px;
@@ -138,11 +139,11 @@
     }
     .pagination li a:hover {
         color: #666;
-    }	
+    }
     .pagination li.active a, .pagination li.active a.page-link {
         background: #03A9F4;
     }
-    .pagination li.active a:hover {        
+    .pagination li.active a:hover {
         background: #0397d6;
     }
 	.pagination li.disabled i {
@@ -156,12 +157,12 @@
         float: left;
         margin-top: 10px;
         font-size: 13px;
-    }    
+    }
 	/* Custom checkbox */
 	.custom-checkbox {
 		position: relative;
 	}
-	.custom-checkbox input[type="checkbox"] {    
+	.custom-checkbox input[type="checkbox"] {
 		opacity: 0;
 		position: absolute;
 		margin: 5px 0 0 3px;
@@ -236,57 +237,87 @@
 	.modal .btn {
 		border-radius: 2px;
 		min-width: 100px;
-	}	
+	}
 	.modal form label {
 		font-weight: normal;
 	}
 	#map { height: 180px; }
 	#mapedit { height: 180px; }
-    }	
+    }
 </style>
 </head>
 <body>
-      <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-      <!--<img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>
-	  <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>-->
-	  <img src="<?php echo base_url('assets/images/logo_pbd.png'); ?>" alt='maptime logo gif' width='45px' height='40px'/>
-      <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">&nbsp; Sistem Informasi Geografis</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('index.php/page/v_home') ?>">Home
-              <span class="sr-only">(current)</span>
+
+  <!-- Navigation -->
+  <div id="my-sidebar-context" class="widget-sidebar-context">
+      <header id="this-header" class="navbar justify-content-start align-items-center navbar-dark bg-dark page-header">
+
+          <a class="navbar-brand" href="#">
+              TUGAS UTS PBD
+          </a>
+
+
+          <a href="#" class="navbar-toggler widget-sidebar-toggler">
+              <i class="fas fa-bars"></i>
+          </a>
+
+      </header>
+
+    <div class="page-body" style="color: #566787;
+  background: url(<?php echo base_url('assets/images/city-map.jpg');?>) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+   -o-background-size: cover;
+    background-size: cover;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 13px;>
+
+
+      <!-- Sidebar <a href="https://www.jqueryscript.net/tags.php?/Navigation/">Navigation</a> -->
+      <nav class="widget-sidebar">
+        <ul>
+          <li class="active">
+            <a href="<?php echo base_url('index.php/page/v_home') ?>">
+              <i class="fas fa-bars"></i><span> Map </span>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="<?php echo base_url('index.php/page/data_landmark') ?>">Landmark</a>
+          <li>
+            <a href="#sidebar-link-mycomponents" data-toggle="collapse"
+               aria-expanded="true"
+               class="dropdown-toggle">
+                <i class="fas fa-shapes"></i><span> Data </span>
+            </a>
+            <ul class="collapse show"
+                id="sidebar-link-mycomponents">
+                <li>
+                  <a href="<?php echo base_url('index.php/page/data_landmark') ?>">List Marker</a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('index.php/page/data_user') ?>">List User</a>
+                </li>
+                <li>
+                  <a href="<?php echo base_url('index.php/page/data_landmark_polygon') ?>">List Polygon</a>
+                </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('index.php/page/data_user') ?>">User</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('index.php/auth/logout') ?>">Logout</a>
+          <li>
+            <a href="<?php echo base_url('index.php/auth/logout') ?>">
+              <i class="fas fa-pencil-alt"></i><span> Logout </span>
+            </a>
           </li>
         </ul>
-      </div>
-    </div>
-  </nav>
+      </nav>
 
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>Landmark <b>Data</b></h2>
+						<h2>List Marker</h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addLandmarkModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Landmark</span></a>
-						<a href="#deleteLandmarkModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete All</span></a>						
+						<a href="#deleteLandmarkModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete All</span></a>
 					</div>
                 </div>
             </div>
@@ -322,7 +353,7 @@
                 </tbody>
             </table>
 			<div class="clearfix">
-                <div class="hint-text">Showing <b>all</b> data <br><a href="<?php echo base_url() ?>index.php/map/export">Export to Excel</a></div>				
+                <div class="hint-text">Showing <b>all</b> data <br><a href="<?php echo base_url() ?>index.php/map/export">Export to Excel</a></div>
             </div>
         </div>
     </div>
@@ -331,11 +362,11 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="<?=base_url()?>index.php/map/addMarker1" method="POST" enctype="multipart/form-data">
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Add Landmark</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Name</label>
 							<input type="text" class="form-control" name="l_name" required>
@@ -358,7 +389,7 @@
 						<div class="form-group">
 							<label>Photo</label>
 							<input type="file" class="form-control" name="l_foto" required>
-						</div>					
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -373,7 +404,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="<?=base_url()?>index.php/map/updateMarker1" method="POST" enctype="multipart/form-data">
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Edit Landmark</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="deleteMarker()">&times;</button>
 					</div>
@@ -401,7 +432,7 @@
 						<div class="form-group">
 							<label>Photo</label>
 							<input type="file" class="form-control" name="l_foto" id="foto_landmark" value="" required>
-						</div>										
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" onclick="deleteMarker()"></input>
@@ -416,11 +447,11 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="<?=base_url()?>index.php/map/deleteAll">
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Delete All Landmarks</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<p>Are you sure you want to delete all landmarks?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -438,12 +469,12 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="<?=base_url()?>index.php/map/deleteByID" method="post">
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Delete Landmark</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
                         <input type="hidden" id="id_landmark" name="l_id" value=""/>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<p>Are you sure you want to delete these landmark?</p>
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
@@ -456,16 +487,18 @@
 		</div>
 	</div>
 </body>
-   
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
-	<script src="<?=base_url()?>assets/vendor/jquery/jquery.slim.min.js"></script>
-	<script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="<?=base_url()?>assets/vendor/jquery/jquery.slim.min.js"></script>
+  <script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?=base_url()?>assets/css/simplesidebar.js"></script>
 
   <script src="<?=base_url()?>assets/leaflet/leaflet.js"></script>
-  
+
   <script type="text/javascript">
     var base_url = "<?=base_url()?>";
 
@@ -536,7 +569,9 @@
 
 	function deleteMarker(){
 		map1.removeLayer(myMarker);
-	}	
-    
+	}
+
   </script>
-</html>                                		                            
+
+
+</html>

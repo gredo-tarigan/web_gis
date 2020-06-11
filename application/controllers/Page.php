@@ -6,19 +6,24 @@ class Page extends MY_Controller {
 	{
     parent::__construct();
     $this->load->model('MapModel','MapModel');
+    $this->load->model('MapPolygonModel','MapPolygonModel');
     $this->load->model('UserModel','UserModel');
   }
-  
+
   public function v_home(){
     $level = $this->session->userdata('level');
+    $result = $this->UserModel->get();
+
+    $data['user'] = $result;
+
     if($level == 'admin'){
-      $this->load->view('v_home');
+      $this->load->view('v_home', $data);
     }
     else if($level == 'operator'){
-      $this->load->view('v_home_operator');
+      $this->load->view('v_home_operator', $data);
     }
     else{
-      $this->load->view('v_home_regular');
+      $this->load->view('v_home_regular', $data);
     }
   }
 
@@ -30,8 +35,21 @@ class Page extends MY_Controller {
     $data['lat'] = $result->bangunan_lat;
     $data['long'] = $result->bangunan_long;
     $data['info'] = $result->keterangan;
+    $data['photo'] = $result->gambar;
 
     $this->load->view('update_landmark', $data);
+  }
+
+  public function update_landmark_polygon($id){
+    $result = $this->MapPolygonModel->getbyID($id);
+
+    $data['id'] = $result->id_polygon;
+    $data['name'] = $result->name_polygon;
+    $data['coordinates'] = $result->coordinates;
+    $data['info'] = $result->information;
+    $data['photo'] = $result->photo;
+
+    $this->load->view('update_landmark_polygon', $data);
   }
 
   public function data_user(){
@@ -55,6 +73,20 @@ class Page extends MY_Controller {
     else if($level == 'operator')
     {
       $this->load->view('data_landmark_operator', $data);
+    }
+  }
+
+  public function data_landmark_polygon(){
+    $level = $this->session->userdata('level');
+    $result = $this->MapPolygonModel->get();
+    $data['landmark'] = $result;
+
+    if($level == 'admin'){
+      $this->load->view('data_landmark_polygon', $data);
+    }
+    else if($level == 'operator')
+    {
+      $this->load->view('data_landmark_polygon_operator', $data);
     }
   }
 

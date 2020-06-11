@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Sistem Informasi Geografis</title>
+  <title>Web GIS</title>
 
   <!-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
     <!-- Bootstrap -->
@@ -36,10 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-      <!--<img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>
-      <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>-->
-      <img src="<?php echo base_url('assets/images/logo_pbd.png'); ?>" alt='maptime logo gif' width='45px' height='40px'/>
-      <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">&nbsp; Sistem Informasi Geografis</a>
+      <img src='https://upload.wikimedia.org/wikipedia/commons/e/e4/Globe.png' alt='maptime logo gif' width='45px' height='40px'/>";
+      <a class="navbar-brand" href="<?php echo base_url('index.php/page/v_home') ?>">Web GIS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
